@@ -42,10 +42,21 @@ def method_3(arr: list):
         print("Индекс из аут оф рендж")
 
 
-print('Метод 1. Введенное число:', method_1())
+def sub_arrays(arr1: list[int], arr2: list[int]) -> list[int]:
+    if len(arr1) != len(arr2):
+        raise IndexError("Массивы должны быть одинаковой длины")
+    result = []
+    for index in range(len(arr1)):
+        result.append(arr1[index] - arr2[index])
+    return result
 
-print('Метод 2. Считываем содержимое файла')
-method_2()
 
-print('Метод 3. Индекс из списка')
-method_3([1, 345, 5, -1])
+# print('Метод 1. Введенное число:', method_1())
+#
+# print('Метод 2. Считываем содержимое файла')
+# method_2()
+#
+# print('Метод 3. Индекс из списка')
+# method_3([1, 345, 5, -1])
+
+print("Метод возвращающий разницу элементов массивов:", sub_arrays([345, 65, 23], [0, 1, 2]))
