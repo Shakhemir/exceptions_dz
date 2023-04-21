@@ -47,16 +47,38 @@ def sub_arrays(arr1: list[int], arr2: list[int]) -> list[int]:
         raise IndexError("Массивы должны быть одинаковой длины")
     result = []
     for index in range(len(arr1)):
-        result.append(arr1[index] - arr2[index])
+        try:
+            result.append(arr1[index] - arr2[index])
+        except TypeError:
+            print("Массивы должны состоять из чисел")
+            break
     return result
 
 
-# print('Метод 1. Введенное число:', method_1())
-#
-# print('Метод 2. Считываем содержимое файла')
-# method_2()
-#
-# print('Метод 3. Индекс из списка')
-# method_3([1, 345, 5, -1])
+def div_arrays(arr1: list[int], arr2: list[int]) -> list[float]:
+    if len(arr1) != len(arr2):
+        raise IndexError("Массивы должны быть одинаковой длины")
+    result = []
+    for index in range(len(arr1)):
+        try:
+            result.append(arr1[index] / arr2[index])
+        except ZeroDivisionError:
+            print("Деление на 0!")
+            break
+        except RuntimeError:
+            print("Проверь массивы!")
+            break
+    return result
 
-print("Метод возвращающий разницу элементов массивов:", sub_arrays([345, 65, 23], [0, 1, 2]))
+
+print('Метод 1. Введенное число:', method_1())
+
+print('Метод 2. Считываем содержимое файла')
+method_2()
+
+print('Метод 3. Индекс из списка')
+method_3([1, 345, 5, -1])
+
+print("Метод возвращающий разницу элементов массивов:", sub_arrays([345, 34, 23], [0, 1, 2]))
+
+print("Метод возвращающий частное элементов массивов:", div_arrays([345, 33, 23], [10, 1, 0]))
