@@ -33,7 +33,19 @@ def method_2():
         print('Это директория!')
 
 
+def method_3(arr: list):
+    index = method_1(f'Введите индекс списка [0..{len(arr) - 1}]')
+    try:
+        value = arr[index]
+        print(f"Значение списка с индексом {index} = {value}")
+    except IndexError:
+        print("Индекс из аут оф рендж")
+
+
 print('Метод 1. Введенное число:', method_1())
 
 print('Метод 2. Считываем содержимое файла')
 method_2()
+
+print('Метод 3. Индекс из списка')
+method_3([1, 345, 5, -1])
