@@ -20,4 +20,20 @@ def method_1(prompt: str = "Введите число"):
             print("Вы не ввели целое число. Попробуйте заново!")
 
 
+def method_2():
+    file_name = input('Введите имя файла: ')
+    try:
+        f = open(file_name)
+        print(f.read())
+    except FileNotFoundError:
+        print('Файл с таким именем не найден')
+    except PermissionError:
+        print('Нет доступа к файлу')
+    except IsADirectoryError:
+        print('Это директория!')
+
+
 print('Метод 1. Введенное число:', method_1())
+
+print('Метод 2. Считываем содержимое файла')
+method_2()
